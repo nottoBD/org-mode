@@ -1,0 +1,74 @@
+#+TITLE: Doom Emacs - Dired Cheatsheet
+#+AUTHOR: David Botton
+#+DATE: <2025-01-29>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Doom Emacs Dired
+
+** Basic Navigation & Opening
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =RET= / n | Open file/directory at point                |
+| =o=       | Open file in other window                   |
+| =v=       | Quick view file (dired-quick-view)          |
+| =q=       | Quit Dired (or close quick view)            |
+| =g=       | Refresh buffer                              |
+| =.=       | Go to parent directory                      |
+| =C-u .=   | Go to home directory                        |
+
+** Marking & Selection
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =m=       | Mark file at point                          |
+| =u=       | Unmark file at point                        |
+| =*=       | Mark all files (various prefixes)           |
+| =* t=     | Toggle marks                                |
+| =* s=     | Mark all files with same extension          |
+| =% m=     | Mark files by regexp                        |
+| =U=       | Unmark all                                  |
+| =t=       | Invert marks                                |
+
+** File Operations (on marked files)
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =C=       | Copy marked files                           |
+| =R=       | Rename / move marked files                  |
+| =D=       | Delete marked files (to trash if configured)|
+| =X=       | Execute shell command on marked files       |
+| =Z=       | Compress / uncompress marked files          |
+| =T=       | Touch (update timestamp)                    |
+| =M=       | Change mode (permissions)                   |
+| =O=       | Change owner                                |
+| =G=       | Change group                                |
+
+** Doom Emacs / Evil-specific Dired keys
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =SPC .=   | Open Dired in current directory (project)   |
+| =SPC o -= | Open Dired side panel (treemacs-like)       |
+| =+=       | Create new directory                        |
+| =d=       | Flag for deletion (classic Dired)           |
+| =x=       | Execute flagged deletions                   |
+| =SPC f d= | Doom Emacs: find file in dired              |
+| =gr=      | Evil: refresh (same as =g=)                 |
+| =TAB=     | Evil: toggle fold (hide/show subdirs)       |
+
+** Useful Prefixes & Tips
+- =%=       → regexp operations (mark, copy, rename)
+- =*=       → mark groups (executables, directories, symlinks…)
+- =C-u=     → most commands become more powerful / ask for input
+- =M-x dired-do-find-regexp= → search & replace across marked files
+
+** Quick Subdir Management
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =i=       | Insert subdirectory                         |
+| =k=       | Kill (remove) inserted subdirectory         |
+| =$=       | Hide details (toggle long listing)          |
+
+** Common Doom Emacs Dired Workflow
+1. =SPC .=    → open project dired
+2. =m= / =*=   → mark files
+3. =C= / =R=   → copy / move
+4. =g=        → refresh after external changes
+5. =q=        → quit
