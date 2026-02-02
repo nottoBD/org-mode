@@ -1,0 +1,19 @@
+#+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Org-Drill for Spaced Repetition
+
+If you installed org-drill.
+
+** Drill Commands
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| M-x org-drill| Start drill session                         |
+
+** Setup and Workflow
+1. Tag heading: C-c C-q, add :drill:.
+2. Add Q/A: Under heading, use #+BEGIN_SRC / #+END_SRC for front/back.
+3. Session: M-x org-drill – shows cards, rate ease (0-5).
+4. For memory: Drill daily on key concepts from notes.

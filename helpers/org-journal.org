@@ -1,0 +1,28 @@
+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Attachments and Journal
+
++attach and +journal for linking PDFs and daily logs.
+
+** Attachments
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =C-c C-a=    | Attach menu (a: attach, d: detach, etc.)    |
+| =C-c C-a a=  | Attach file (drag/drop or select)           |
+| =C-c C-a o=  | Open attachment                             |
+| =C-c C-a z=  | Sync attachments (if moved)                 |
+
+** Journal
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =SPC n j=    | Open today's journal (Doom default)         |
+| =C-c C-j=    | Org journal new entry                       |
+
+** Common Attachment/Journal Workflow
+1. Attach PDF: In Org heading, C-c C-a a, select theoretical-slides.pdf.
+2. Open: C-c C-o on link.
+3. Journal reflection: SPC n j, add * Daily Study Log, note what stuck from slides.
+4. Link back: In journal, C-c C-l to synthesis.org heading.

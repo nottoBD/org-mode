@@ -1,0 +1,21 @@
+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+
+
+* Capture for Quick Ideas
+
+Your template for study notes.
+
+** Capture Commands
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =SPC X=      | Org capture menu                            |
+| =SPC X s=    | Your "Study Note" template                  |
+
+** Common Capture Workflow
+1. Idea hits: SPC X s, enter title, add note.
+2. Lands in inbox.org – refile later: C-c C-w to move to synthesis.org.
+3. Schedule: In captured note, C-c C-s for agenda integration.

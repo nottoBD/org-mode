@@ -1,0 +1,6 @@
+# not git-crypt
+.gitattributes !filter !diff
+.git/git-crypt/** !filter !diff
+
+# directories
+school/copyrighted/** filter=git-crypt diff=git-crypt

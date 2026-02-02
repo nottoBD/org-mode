@@ -1,0 +1,42 @@
+#+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+
+* Agenda for Study Management
+
+Your config sets org-agenda-files to ~/org/study/, with super-agenda groups for priorities and categories.
+
+** Agenda Access and Views
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =SPC o A=    | Open agenda menu                            |
+| =SPC o A a=  | Agenda for current week/day                 |
+| =SPC o A t=  | TODO list                                   |
+| =SPC o A s=  | Your custom "Study Agenda" view             |
+| =d= / =w= / =m= | Switch to day/week/month view (in agenda)   |
+| =f= / =b=    | Forward/backward in time                    |
+| =.=          | Go to today                                 |
+| =r=          | Refresh agenda                              |
+| =q=          | Quit agenda                                 |
+
+** Task Management in Agenda
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =t=         | Change TODO state                           |
+| =s=          | Schedule task                               |
+| =d=          | Set deadline                                |
+| =p=          | Set priority (A/B/C)                        |
+| =I= / =O=    | Clock in/out (time tracking)                |
+| =J=          | Jump to running clock                       |
+| =C-c C-x C-a= | Archive done tasks (from Org buffer)        |
+
+** Common Agenda Workflow for Study
+1. Schedule session: In Org file, under * Review Exercises, C-c C-s (pick date).
+2. Tag it: C-c C-q, add :study:.
+3. View agenda: SPC o A s – see grouped by today/overdue.
+4. Focus day: In agenda, d for day view, t to mark DONE.
+5. Reschedule: s on task, pick new date for spaced review.
+6. Weekly review: SPC o A a w, scan for upcoming deadlines.
+7. If using habits (+habit flag): Track daily study streaks in agenda.

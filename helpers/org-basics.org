@@ -1,0 +1,42 @@
+#+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+
+* Org Mode Basics in Doom Emacs
+
+** Navigation and Structure
+Org files use headings (* Level 1, ** Level 2) for chapter-like separation. Your config enables pretty outlines and vim-like folding.
+
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =SPC m o=    | Insert new heading (after current)          |
+| =TAB= / =za= | Cycle visibility (fold/unfold subtree)      |
+| =SHIFT-TAB= / =zA= | Cycle global visibility (all headings)      |
+| =zo=         | Unfold/open the current fold                |
+| =zO=         | Unfold/show the entire subtree recursively  |
+| =zc=         | Close/fold the current fold                 |
+| =zC=         | Fold/hide the entire subtree recursively    |
+| =zr=         | Show/unfold the next fold level (increase visibility depth) |
+| =zm=         | Fold/hide the next fold level (decrease visibility depth) |
+| =zR=         | Unfold/open all folds in the buffer         |
+| =zM=         | Fold/close all folds in the buffer          |
+| =SPC o o=    | Fuzzy jump to heading (counsel-org-goto)    |
+| =SPC s i=    | Imenu sidebar for outline navigation        |
+| =C-c C-n/p=  | Next/previous heading                       |
+| =C-c C-f/b=  | Next/previous same-level heading            |
+| =M-h=        | Promote subtree (increase level)            |
+| =M-l=        | Demote subtree (decrease level)             |
+
+** Editing and TODOs
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =C-c C-t=    | Cycle TODO states (TODO -> DONE, etc.)      |
+| =C-c C-q=    | Set tags (e.g., :study:)                    |
+| =C-c C-s=    | Schedule task (date/time)                   |
+| =C-c C-d=    | Set deadline                                |
+| =C-c C-e=    | Export (e.g., to PDF: p p)                  |
+| =C-c C-a=    | Attach file (e.g., PDF)                     |
+| =C-c C-l=    | Insert link (e.g., [[file:slides.pdf]])     |
+| =C-c C-o=    | Open link/attachment                        |

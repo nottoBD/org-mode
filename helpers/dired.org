@@ -8,8 +8,10 @@
 ** Basic Navigation & Opening
 | Key       | Action                                      |
 |-----------|---------------------------------------------|
-| =RET= / n | Open file/directory at point                |
-| =o=       | Open file in other window                   |
+| =SPC o -= | Open dired                                   |
+| =*/=      | Select all directories                       |
+| =t=       | Toggle marked selections                     |
+| =o=       | Sort                                        |
 | =v=       | Quick view file (dired-quick-view)          |
 | =q=       | Quit Dired (or close quick view)            |
 | =g=       | Refresh buffer                              |
@@ -31,11 +33,12 @@
 ** File Operations (on marked files)
 | Key       | Action                                      |
 |-----------|---------------------------------------------|
+| =SPC .=   | Create file                     |
 | =C=       | Copy marked files                           |
-| =R=       | Rename / move marked files                  |
+| =R=       | Rename / Move                               |
 | =D=       | Delete marked files (to trash if configured)|
 | =X=       | Execute shell command on marked files       |
-| =Z=       | Compress / uncompress marked files          |
+| =Z=       | Compresss / uncompress marked files         |
 | =T=       | Touch (update timestamp)                    |
 | =M=       | Change mode (permissions)                   |
 | =O=       | Change owner                                |
@@ -70,5 +73,6 @@
 1. =SPC .=    → open project dired
 2. =m= / =*=   → mark files
 3. =C= / =R=   → copy / move
-4. =g=        → refresh after external changes
-5. =q=        → quit
+4. =u= / =U=   → unselect / all
+5. =g=        → refresh after external changes
+6. =q=        → quit

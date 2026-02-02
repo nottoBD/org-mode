@@ -1,0 +1,43 @@
+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* PDF Viewing with pdf-tools
+
+Enabled via :tools pdf – for reading slides/exercises inline.
+
+** PDF Navigation and Viewing
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =SPC f o=    | Open file (PDF)                             |
+| =j= / =k=    | Next/previous line (Evil)                   |
+| =SPC= / =S-SPC= | Next/previous page                          |
+| =g g=        | First page                                  |
+| =G=          | Last page                                   |
+| =C-f= / =C-b= | Forward/backward page                       |
+| =+= / =-=    | Zoom in/out                                 |
+| =0=          | Reset zoom                                  |
+| =/=          | Search forward                              |
+| =?=          | Search backward                             |
+| =n= / =p=    | Next/previous search hit                    |
+| =q=          | Quit PDF view                               |
+
+** Annotation and Markup
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| =m h=        | Highlight text (markup)                     |
+| =m t=        | Add text note                               |
+| =m s=        | Strike-through                              |
+| =m u=       | Underline                                   |
+| =m d=        | Delete annotation                           |
+| =m l=       | List all annotations                        |
+| =C-c C-a=    | Various annotation modes (prefix)           |
+
+** Common PDF Workflow for Notes
+1. Open PDF: SPC f o, select exercises.pdf.
+2. Navigate: j/k for lines, SPC for pages.
+3. Annotate: Select text (mouse or C-SPC), m h to highlight key theory.
+4. Search: / "cybersecurity" to find slides.
+5. Save: Annotations persist; refresh with g if needed.
+6. For memory: Highlight, then use org-noter to link notes (next section).

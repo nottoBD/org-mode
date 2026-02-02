@@ -1,0 +1,337 @@
+#+TITLE: MSc Cybersecurity - Protocols, Cryptanalysis and mathematical cryptology 
+#+AUTHOR: David Botton
+#+DATE: <2026-01-30 Fri>
+#+OPTIONS: toc:t num:t ^:nil
+#+STARTUP: overview
+#+DRILL_CARD_TYPE: twosided  ; Default for org-drill cards (adjust as needed)
+#+PROPERTY: EFFORT_ALL 0:30 1:00 2:00 3:00  ; Expanded for time estimates in agenda tasks
+#+PROPERTY: CATEGORY_ALL Theory Practice Review Synthesis Lab  ; For categorizing tasks in agenda
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: INFOF514-synthesis.pdf
+
+# Agenda Setup: This file is included in org-agenda-files via your config (~/.config/doom/config.el)
+# Ensure org-agenda-files includes "~/org/school/*.org"
+
+# Directories for Links/Attachments:
+# - Copyrighted materials: ~/org/copyrighted/[course-code]/ (subfolder per course)
+# - Non-copyrighted elements: ~/org/public/[course-code]/ (exercises, old exams)
+# Use relative or absolute links: [[file:~/org/copyrighted/[course-code]/slides-session1.pdf]]
+# For attachments: Set per-section DIR property, or global.
+
+# Babel for Code: Enable code execution (e.g., for cybersecurity scripts). In Doom, ensure +babel in org module.
+# Example: #+begin_src python :results output
+# print("Hello, encryption!")
+# #+end_src
+# Hit C-c C-c to execute.
+
+# Improvements:
+# - Ranged Deadlines: Use DEADLINE: <date>--<date> for multi-day spans (Org supports this for agenda warnings across range).
+# - Effort/Categories: For better agenda filtering (e.g., by :CATEGORY:).
+# - More Drills: Examples with cloze, multisided.
+# - Clocking: Use I/O in agenda or C-c C-x C-i/o for time tracking study sessions.
+
+* Course Overview
+:PROPERTIES:
+:DRILL_CARD_TYPE: nil  ; No drill for overview
+:CATEGORY: Overview
+:END:
+** Course Details
+- Code: INFO-F514
+- Instructor: PETIT Christophe
+- Schedule: on Fridays from 10am to 12am 
+- Objectives:
+- Prerequisites: nihil
+** Resources
+- Syllabus: [[file:~/org/school/copyrighted/cryptanalysis/slide-1_intro.pf][Introduction]
+- Textbook: [[file:~/org/public/[course-code]/textbook-notes.org][Textbook Notes]] or attach.
+- Non-copyrighted Folder: [[file:~/org/school/public/cryptanalysis/][Public Resources]] (exercises, old exams)
+- External Links: [e.g., Arch Wiki for tools: https://wiki.archlinux.org/title/Security]
+** TODO Course Milestones
+  DEADLINE: <2026-06-30 Mon>  ; End of semester
+  - Midterm: SCHEDULED: <2026-04-15 Wed>
+  - Final Synthesis: DEADLINE: <2026-06-01 Mon>--<2026-06-15 Mon>  ; Range for submission window
+        
+* Sessions
+# Insert new sessions easily: Use a custom capture template (add to config.el, see below).
+# Or yasnippet: Install yasnippet via packages.el, create snippet for "session".
+# Structure: Each session covers chapter parts over multiple dates if needed.
+
+** Session 1: [Date/Topic, e.g., <2026-02-02 Mon> - Introduction to Cybersecurity]
+:PROPERTIES:
+:EFFORT: 2:00
+:CATEGORY: Theory
+:END:
+*** TODO Prep: Read Intro Slides and Complete Quiz
+    SCHEDULED: <2026-02-01 Sun>
+    DEADLINE: <2026-02-02 Mon 10:00-12:00>  ; Time range for session
+    - Slides: [[file:~/org/school/copyrighted/cryptanalysis/slide-1_intro.pdf]Intro Slides]]
+    - Exercises: [[file:~/org/public/[course-code]/quiz1.pdf][Quiz 1]]
+*** Notes
+    # Sync with org-noter: SPC m n
+    - Definition: Cybersecurity protects systems from digital attacks.
+    - CIA Triad: Confidentiality, Integrity, Availability.
+
+      :NOTER_PAGE: 10
+asdasdasddsa
+      sd
+*** Lab/Script
+    #+begin_src bash
+    # Example: Check system security
+    echo "Running basic audit.. ww."
+    sudo auditctl -s
+    #+end_src
+*** Review Drill
+    :PROPERTIES:
+    :DRILL_CARD_TYPE: twosided
+    :END:
+    **** What is the CIA triad?                                  :drill:
+         :PROPERTIES:
+         :DRILL_LAST_QUALITY: 3
+         :END:
+         Front: Define the CIA triad.
+         #+BEGIN_SRC
+         Back: Confidentiality, Integrity, Availability.
+         #+END_SRC
+
+** Session 2: [Date/Topic, e.g., <2026-02-09 Mon> - Network Security Basics]
+:PROPERTIES:
+:EFFORT: 3:00
+:CATEGORY: Practice
+:END:
+*** TODO Review Session 1 and Prep Network Exercises
+    SCHEDULED: <2026-02-08 Sun>
+    DEADLINE: <2026-02-09 Mon>--<2026-02-10 Tue>  ; Multi-day prep range
+    - Slides: [[file:~/org/copyrighted/[course-code]/slides-network.pdf][Network Slides]]
+    - Old Exam: [[file:~/org/public/[course-code]/old-exam-network.pdf][Old Exam]]
+*** Notes
+    - Firewalls: Block unauthorized access.
+    - Use org-noter for annotations.
+*** Lab/Script
+    #+begin_src python
+    # Simple port scanner example (educational only)
+    import socket
+    s = socket.socket()
+    print("Port check...")
+    #+end_src
+*** Review Drill
+    :PROPERTIES:
+    :DRILL_CARD_TYPE: cloze
+    :END:
+    **** Firewall Definition                                     :drill:
+         A firewall is a network security system that [monitors and controls] incoming and outgoing network traffic.
+
+# Add more sessions as needed...
+
+* Chapters
+# In-depth structure: 6 chapters with summaries, concepts, links, notes, drills, TODOs.
+# Chapters span sessions; link back for cross-ref.
+
+** Chapter 1: Fundamentals of Cybersecurity
+:PROPERTIES:
+:CATEGORY: Theory
+:DIR: ~/org/copyrighted/[course-code]/ch1/  ; Attachments dir
+:END:
+*** Summary
+    Introduction to core concepts, threats, and defenses.
+*** Key Concepts
+    - Threat Models
+    - Risk Assessment
+    - Basic Encryption
+*** Linked Sessions
+    - Session 1, Session 2
+*** Synthesis Notes
+    # High-level integration
+    Combining CIA with practical examples from labs.
+*** TODO Synthesize Chapter 1 Notes
+    SCHEDULED: <2026-02-15 Sun>
+    DEADLINE: <2026-02-20 Fri>--<2026-02-25 Wed>  ; Review range
+    :PROPERTIES:
+    :EFFORT: 1:00
+    :END:
+*** Drills
+    **** Cloze Example                                           :drill:
+         The primary goal of cybersecurity is to protect [information] from unauthorized access.
+    **** Multisided Card                                         :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: multisided
+         :END:
+         Side 1: What is a threat actor?
+         #+BEGIN_SRC
+         Side 2: Examples: Hackers, insiders.
+         Side 3: Mitigation: Access controls.
+         #+END_SRC
+
+** Chapter 2: Cryptography and Encryption
+:PROPERTIES:
+:CATEGORY: Theory
+:END:
+*** Summary
+    Principles of symmetric/asymmetric encryption, hashing.
+*** Key Concepts
+    - AES, RSA
+    - Public Key Infrastructure (PKI)
+    - Hash Functions (SHA-256)
+*** Linked Sessions
+    - Session 3, Session 4
+*** Synthesis Notes
+    Applications in secure communications.
+*** TODO Implement Simple Encryption Script
+    SCHEDULED: <2026-03-01 Mon>
+    DEADLINE: <2026-03-05 Fri 14:00-16:00>
+    :PROPERTIES:
+    :EFFORT: 2:00
+    :END:
+    #+begin_src go
+    // Go example for hashing
+    package main
+    import "crypto/sha256"
+    func main() { /* ... */ }
+    #+end_src
+*** Drills
+    **** Symmetric vs Asymmetric                                :drill:
+         Front: Key difference.
+         #+BEGIN_SRC
+         Back: One key vs key pair.
+         #+END_SRC
+
+** Chapter 3: Network Security
+:PROPERTIES:
+:CATEGORY: Practice
+:END:
+*** Summary
+    Protocols, firewalls, intrusion detection.
+*** Key Concepts
+    - TCP/IP Vulnerabilities
+    - VPNs
+    - IDS/IPS
+*** Linked Sessions
+    - Session 5, Session 6
+*** Synthesis Notes
+    Case studies from real breaches.
+*** TODO Configure Virtual Firewall Lab
+    SCHEDULED: <2026-03-15 Mon>
+    DEADLINE: <2026-03-20 Sat>--<2026-03-25 Thu>
+    :PROPERTIES:
+    :EFFORT: 3:00
+    :END:
+*** Drills
+    **** What is a VPN?                                         :drill:
+         Front: Define VPN.
+         #+BEGIN_SRC
+         Back: Virtual Private Network for secure tunneling.
+         #+END_SRC
+
+** Chapter 4: Web and Application Security
+:PROPERTIES:
+:CATEGORY: Practice
+:END:
+*** Summary
+    OWASP top 10, secure coding practices.
+*** Key Concepts
+    - SQL Injection
+    - XSS
+    - Authentication Mechanisms
+*** Linked Sessions
+    - Session 7, Session 8
+*** Synthesis Notes
+    Building secure apps on Linux.
+*** TODO Audit Sample Web App
+    SCHEDULED: <2026-04-01 Wed>
+    DEADLINE: <2026-04-05 Sun 09:00-18:00>
+    :PROPERTIES:
+    :EFFORT: 2:00
+    :END:
+*** Drills
+    **** OWASP Top 1                                            :drill:
+         Front: What is the top OWASP risk?
+         #+BEGIN_SRC
+         Back: Injection attacks.
+         #+END_SRC
+
+** Chapter 5: Incident Response and Forensics
+:PROPERTIES:
+:CATEGORY: Review
+:END:
+*** Summary
+    Handling breaches, digital evidence collection.
+*** Key Concepts
+    - IR Phases: Preparation, Identification, etc.
+    - Tools: Volatility, Autopsy
+*** Linked Sessions
+    - Session 9, Session 10
+*** Synthesis Notes
+    Integration with Artix Linux tools (e.g., auditd).
+*** TODO Simulate Incident Response
+    SCHEDULED: <2026-04-20 Mon>
+    DEADLINE: <2026-04-25 Sat>--<2026-04-30 Thu>
+    :PROPERTIES:
+    :EFFORT: 3:00
+    :END:
+    #+begin_src bash
+    # Forensic script example
+    sudo foremost -i /dev/sda -o output/
+    #+end_src
+*** Drills
+    **** IR First Phase                                         :drill:
+         Front: First phase of incident response.
+         #+BEGIN_SRC
+         Back: Preparation.
+         #+END_SRC
+
+** Chapter 6: Advanced Topics and Emerging Threats
+:PROPERTIES:
+:CATEGORY: Synthesis
+:END:
+*** Summary
+    AI in security, quantum threats, IoT security.
+*** Key Concepts
+    - Machine Learning for Detection
+    - Post-Quantum Crypto
+    - Zero-Trust Models
+*** Linked Sessions
+    - Session 11+
+*** Synthesis Notes
+    Future-proofing on AMD hardware like Tuxedo laptop.
+*** TODO Research Quantum-Resistant Algorithms
+    SCHEDULED: <2026-05-10 Wed>
+    DEADLINE: <2026-05-15 Mon>--<2026-05-20 Sat>
+    :PROPERTIES:
+    :EFFORT: 2:00
+    :END:
+*** Drills
+    **** What is Zero-Trust?                                    :drill:
+         Front: Define Zero-Trust.
+         #+BEGIN_SRC
+         Back: Never trust, always verify.
+         #+END_SRC
+
+* Agenda Integration
+# All TODOs/SCHEDULED/DEADLINE appear in agenda (SPC o A).
+# Ranged deadlines show warnings across days.
+# Use super-agenda for grouping by CATEGORY.
+# Clock study: I to start, O to stop; report with C-c C-x C-r.
+
+* Drill Sessions
+# M-x org-drill for file-wide; or C-c C-v d on subtree.
+# Mix types: twosided, cloze, multisided.
+
+** General Drills
+*** Cloze Sample                                              :drill:
+    Cybersecurity involves protecting against [cyber threats].
+*** Multisided Example                                        :drill:
+    :PROPERTIES:
+    :DRILL_CARD_TYPE: multisided
+    :END:
+    Side 1: Common attack vector?
+    #+BEGIN_SRC
+    Side 2: Phishing.
+    Side 3: Prevention: Awareness training.
+    #+END_SRC
+
+* Attachments
+# Global attachments; override per-section with :DIR:
+:PROPERTIES:
+:DIR: ~/org/copyrighted/[course-code]/
+:END:
+- Use C-c C-a to attach files like slides.
+

@@ -1,0 +1,34 @@
+#+TITLE: Doom Emacs - Cheatsheet
+#+AUTHOR: David Botton
+#+DATE: <2025-01-29>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Doom Emacs Projects
+
+** Opening
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =SPC p p= | Open projects (M-x projectile-discover..)   |
+| =SPC o p= | Open Treemacs                               |
+| =SPC o T= | Open vterm                                  |
+| =SPC f r= | Open recent files                           |
+| ==        |                                             |
+| ==        |                                             |
+| ==        |                                             |
+| ==        |                                             |
+| ==        |                                             |
+
+** Marking & Selection
+| Key       | Action                                      |
+|-----------|---------------------------------------------|
+| =m=       | Mark file at point                          |
+| =u=       | Unmark file at point                        |
+| =*=       | Mark all files (various prefixes)           |
+| =* t=     | Toggle marks                                |
+| =* s=     | Mark all files with same extension          |
+| =% m=     | Mark files by regexp                        |
+| =U=       | Unmark all                                  |
+| =t=       | Invert marks                                |
+
+
+
