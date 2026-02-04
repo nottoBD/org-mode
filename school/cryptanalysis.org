@@ -38,25 +38,38 @@
 ** Course Details
 - Code: INFO-F514
 - Instructor: PETIT Christophe
-- Schedule: on Fridays from 10am to 12am 
-- Objectives:
+- Schedule: on Fridays from 10am to 12am on Teams end of march
+- Room: local HELB 2106
+- Objectives: https://www.ulb.be/en/programme/info-f514
 - Prerequisites: nihil
 ** Resources
-- Syllabus: [[file:~/org/school/copyrighted/cryptanalysis/slide-1_intro.pf][Introduction]
-- Textbook: [[file:~/org/public/[course-code]/textbook-notes.org][Textbook Notes]] or attach.
-- Non-copyrighted Folder: [[file:~/org/school/public/cryptanalysis/][Public Resources]] (exercises, old exams)
-- External Links: [e.g., Arch Wiki for tools: https://wiki.archlinux.org/title/Security]
-** TODO Course Milestones
-  DEADLINE: <2026-06-30 Mon>  ; End of semester
-  - Midterm: SCHEDULED: <2026-04-15 Wed>
-  - Final Synthesis: DEADLINE: <2026-06-01 Mon>--<2026-06-15 Mon>  ; Range for submission window
-        
+- Moodle: https://uv.ulb.ac.be/course/view.php?id=130675 
+- Course slides: [[~/org/school/copyrighted/cryptanalysis/]] 
+- Non-copyrighted Folder: [[~/org/school/public/cryptanalysis/]]
+** Course Milestones
+*** TODO Project Proposal
+  DEADLINE: <2026-02-27 Fri>
+  - https://uv.ulb.ac.be/mod/assign/view.php?id=1567234
+*** TODO Project Group
+  DEADLINE: <2026-03-23 Mon>
+  - https://uv.ulb.ac.be/mod/choicegroup/view.php?id=1567233
+*** TODO Progress Report
+  DEADLINE: <2026-03-27 Fri>
+  - https://uv.ulb.ac.be/mod/assign/view.php?id=1567235 
+*** TODO Group Report (1st session)    
+  DEADLINE: <2026-04-30 Thu>
+  - https://uv.ulb.ac.be/mod/assign/view.php?id=1567236
+*** TODO Individual Report (1st session)
+  DEADLINE: <2026-05-08 Friday>
+  - https://uv.ulb.ac.be/mod/assign/view.php?id=1567237
+   
+
 * Sessions
 # Insert new sessions easily: Use a custom capture template (add to config.el, see below).
 # Or yasnippet: Install yasnippet via packages.el, create snippet for "session".
 # Structure: Each session covers chapter parts over multiple dates if needed.
 
-** Session 1: [Date/Topic, e.g., <2026-02-02 Mon> - Introduction to Cybersecurity]
+** Session 1: [<2026-06-02 Fri> - Introduction to e-Voting system]
 :PROPERTIES:
 :EFFORT: 2:00
 :CATEGORY: Theory
@@ -126,13 +139,13 @@ asdasdasddsa
 # In-depth structure: 6 chapters with summaries, concepts, links, notes, drills, TODOs.
 # Chapters span sessions; link back for cross-ref.
 
-** Chapter 1: Fundamentals of Cybersecurity
+** Week 1: Introduction & e-voting
 :PROPERTIES:
 :CATEGORY: Theory
-:DIR: ~/org/copyrighted/[course-code]/ch1/  ; Attachments dir
+:DIR: ~/org/school/copyrighted/cryptanalysis/
 :END:
 *** Summary
-    Introduction to core concepts, threats, and defenses.
+Introduction to core concepts, threats, and defenses.
 *** Key Concepts
     - Threat Models
     - Risk Assessment

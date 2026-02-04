@@ -61,7 +61,7 @@
 - =*=       → mark groups (executables, directories, symlinks…)
 - =C-u=     → most commands become more powerful / ask for input
 - =M-x dired-do-find-regexp= → search & replace across marked files
-
+  
 ** Quick Subdir Management
 | Key       | Action                                      |
 |-----------|---------------------------------------------|
