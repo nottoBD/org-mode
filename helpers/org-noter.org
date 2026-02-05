@@ -1,30 +1,34 @@
-#+TITLE: Doom Emacs - Org Mode Cheatsheet for MSc Cybersecurity Workflow
+#+TITLE: Doom Emacs - Org mode - org-noter
 #+AUTHOR: David Botton
 #+DATE: <2026-01-30>
 #+OPTIONS: toc:nil num:nil ^:nil
 
 
-* Org-Noter for PDF-Synced Notes
+* Keybindings
 
-+noter flag enables this – syncs Org notes to PDF pages/highlights for recall.
-
-** Noter Commands
+** Org Buffer (Notes Side)
 | Key          | Action                                      |
 |--------------|---------------------------------------------|
-| =SPC m n=    | Start org-noter session (your custom key)   |
-| =C-c C-a h=  | Highlist text in pdf                        |
-| ==           | Highlight text in pdf                       |
-| =M-p= / =M-n= | Previous/next note                          |
-| =q=          | Quit noter session                          |
-| =k=          | Kill session (close buffers)                |
-| =s=          | Sync current note to PDF                    |
-| =y=          | Yank PDF location to Org                    |
+| SPC m n      | Start org-noter session                     |
+| SPC m N      | Start org-noter session                     |
+| RET / gf     | Open link at point (e.g., PDF file::page)  |
+| C-c C-o      | Open link at point (built-in, vertical split)|
+| M-p / M-n    | Previous/next note (sync PDF page)         |
+| C-M-p / C-M-n| Previous/next precise note (jump exact location) |
+| SPC m t l    | Toggle raw link display (for editing paths) |
 
-** Common Org-Noter Workflow for Remembering
-1. Create Org: In ~/org/study/notes/crypto-notes.org, add * Slides Notes.
-2. Open PDF: SPC f o slides.pdf (splits if noter active).
-3. Start session: Under heading, SPC m n – PDF and Org side-by-side.
-4. Annotate: In PDF, highlight text (m h), then i to insert as Org subheading with page link.
-5. Add note: Type explanation under new heading for why it's key (aids memory).
-6. Review: Click Org link to jump PDF; M-n to next note.
-7. Close: q, then revisit later – notes recall context without reopening PDF.
+** PDF Buffer (Document Side, Emacs State)
+| Key          | Action                                      |
+|--------------|---------------------------------------------|
+| SPC m h      | Highlight selected text (pdf)               |
+| i            | Insert approximate note (pdf)               |
+| M-i          | Insert headline note (org)                                     |
+| M-p / M-n    | Previous/next note (org)                    |
+| q            | Quit session (close PDF, keep notes)        |
+| k            | Kill session (close all buffers)            |
+| s            | Sync current note to PDF location           |
+| y            | Yank PDF location to Org (store-link)       |
+| C-s / C-r    | Search forward/backward in PDF text (OCR/nav)|
+| n / p        | Next/previous page                          |
+| + / -        | Zoom in/out                                 |
+| C-S-v        | Paste from clipboard (if needed in annot)   |
