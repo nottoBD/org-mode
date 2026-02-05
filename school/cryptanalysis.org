@@ -49,20 +49,11 @@
 ** Resources
 :PROPERTIES:
 :NOTER_DOCUMENT: copyrighted/cryptanalysis/slide-1_intro.pdf
-:NOTER_PAGE: [[pdf:/home/devid/org/school/copyrighted/cryptanalysis/copyrighted/cryptanalysis/slide-1_intro.pdf::2]]
+:NOTER_PAGE: [[pdf:/home/devid/org/school/copyrighted/cryptanalysis/copyrighted/cryptanalysis/slide-1_intro.pdf::3]]
 :END:
 - Moodle: https://uv.ulb.ac.be/course/view.php?id=130675 
 - Intoductive slides: [[file:~/org/school/copyrighted/cryptanalysis/slide-1_intro.pdf][Intro Slides]]
-*** oral examination,
-:PROPERTIES:
-:NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/slide-1_intro.pdf::3++0.00;;annot-3-13]]
-:ID:       copyrighted/cryptanalysis/slide-1_intro.pdf-annot-3-13
-:HIGHLIGHT: #s(pdf-highlight 3 (3 (0.46361502347417843 0.7170124481327801 0.5187793427230047 0.7112033195020747)))
-:END:
- okay we see
  
-
-
 ** Course Milestones
 *** TODO Project Proposal
   DEADLINE: <2026-02-27 Fri>
@@ -94,20 +85,131 @@
 *** TODO Prep: Read Intro Slides and Complete Quiz
     SCHEDULED: <2026-02-01 Sun>
     DEADLINE: <2026-02-02 Mon 10:00-12:00>  ; Time range for session
-    - Slides: 
-    - Exercise: [[file:public/cryptanalysis/w1-assignment_adida_helios.pdf][Helios e-Voting]]
+     - Slides: [[~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf][Week 1: e-Voting]]
+     - Research Paper: [[file:public/cryptanalysis/w1-assignment_adida_helios.pdf][Helios e-Voting]]
 *** Notes
     # Sync with org-noter: SPC m n
+    :PROPERTIES:
+    :NOTER_DOCUMENT: public/cryptanalysis/w1-assignment_adida_helios.pdf
+    :NOTER_PAGE: [[pdf:~/org/school/public/cryptanalysis/w1-assignment_adida_helios.pdf::1]]
+    :END:
 
-      :NOTER_PAGE: 10
-*** Lab/Script
-    #+begin_src bash
-    #+end_src
+**** Preparatory Assignment Answers
+     As per the course overview (slide-1_intro.pdf, section 2.1), the preparatory work for the first lecture involves reading the assigned paper—"Electing a University President using Open-Audit Voting: Analysis of Real-World Use of Helios" by Ben Adida et al. (2009)—and reflecting on the following questions. These are not for submission but to prepare for discussion. Below are detailed, expert-level answers based on a thorough analysis of the paper, cross-referenced with the theoretical slides (w1_evoting.pdf) where relevant.
+
+***** 1. What were the main technical and non-technical challenges in this election?
+      :PROPERTIES:
+      :NOTER_PAGE: [[pdf:~/org/school/public/cryptanalysis/w1-assignment_adida_helios.pdf::1+%%(org-noter--get-precise-info)]]
+      :END:
+
+      The paper details the 2009 Université catholique de Louvain (UCL) presidential election, which used a customized version of the Helios open-audit e-voting system. This was a high-stakes election with 25,000 eligible voters (faculty, students, staff), no precedent for universal suffrage at UCL, and a need for secrecy, verifiability, and weighted votes by category. Challenges are divided into technical (system design/implementation) and non-technical (organizational/user-related), as follows:
+
+      ****** Technical Challenges:
+       - **Adapting to Weighted Votes and Category Privacy:** Helios 1.0 used mixnets, which couldn't handle weighted votes (e.g., faculty votes weighted differently from students) without revealing per-category results, violating election bylaws. Solution: Shift to homomorphic tallying with Exponential El Gamal encryption, allowing weighted aggregation under encryption. However, this introduced a "knapsack problem" where final tallies could reveal category breakdowns; mitigated by using approximate weights to create ambiguity (e.g., ~10^5 solutions per candidate).
+       - **Scalability and Performance:** Verifiability was a proof-of-concept in Helios 1.0, not suited for rapid tallying of thousands of votes. UCL implemented custom C/GMP code for proof verification (1300 ballots/minute) and discrete log extraction (Shanks' baby-step/giant-step, <10 seconds for 42-bit logs). Browser limitations for web-based tallying/verification were noted, leading to offline tools.
+       - **Distributed Key Management and Decryption:** Single-key decryption in Helios 1.0 risked individual ballot decryption. Solution: Distributed keys among trustees (multiplied public keys), but generating/using keys securely with non-expert trustees was tricky—required supervised, air-gapped laptops with live-CDs and USB storage.
+       - **Integration with Existing Infrastructure:** Helios 1.0 relied on Google App Engine, conflicting with EU privacy laws. Solution: Standalone open-source stack (Python/Django/PostgreSQL). Voter authentication integrated via oAuth for UCL's system, but paper notes future separation of ballot prep/submission.
+       - **Client-Side Security and Usability:** Browser-based encryption (JavaScript/LiveConnect) risked malware altering votes, though deemed low-risk for this election. UI needed simplification (e.g., progress bars, "please wait" messages) for non-experts. Added minimum answers (e.g., no accidental blanks) and standalone verifiers hosted by third parties (e.g., Harvard).
+       - **Complaint Handling and Audit:** Open-audit invited complaints; mitigated by signed PDF receipts for registration/voting, enabling evidence-based resolution. Bulletin board audit day delayed results but allowed verification.
+
+      ****** Non-Technical Challenges:
+       - **Building Trust in a Novel System:** No precedent for UCL-wide secret-ballot election; general distrust of computer voting. Solution: Cryptography dept. involvement, public demos, test election (~3000 participants), and polling stations for tech-averse voters (>97% voted remotely anyway).
+       - **Voter Education and Support:** Many voters unfamiliar with computers/Internet voting in Belgium. Issues: Lost credentials, incompatible browsers (e.g., no Java). Solution: Printed docs, videos, re-voting allowed, UCL Service Desk handled ~120 tickets (mostly credential resets).
+       - **Coercion and Secrecy in Low-Coercion Setting:** Remote voting vulnerable to peer pressure/buying, but low stakes (no bribes expected). Solution: Low-coercion assumption, aliases for anonymity, no category results revealed.
+       - **Organizational Logistics:** Registration phase to prevent stuffing (5000 registered), aliases for secrecy, audit day for complaints (7 resolved, all user errors). Delays from audit frustrated some, but acceptance grew via presentations.
+       - **Complaint Management:** Expected DoS from open-audit, but few occurred; signed receipts required evidence, tracing frivolous claims via logs.
+
+      Overall, the election succeeded (no controversy, winner by 2 votes in round 1), showing open-audit eases handling issues via evidence, aligning with course themes of verifiable systems (w1_evoting.pdf, pages 1-5).
+
+***** 2. The paper is now 15 years old (published 2009). What are the existing free or commercial solutions available today to carry a university rector election? How do they compare with Helios?
+      :PROPERTIES:
+      :NOTER_PAGE: [[pdf:~/org/school/public/cryptanalysis/w1-assignment_adida_helios.pdf::1+%%(org-noter--get-precise-info)]]
+      :END:
+
+      Helios (now evolved to [Helios 3.0+](https://heliosvoting.org/)) was pioneering as a web-based, open-audit system with end-to-end verifiability (E2EV), using crypto for ballot assurance and universal verification. It focused on low-coercion settings like university elections, with browser encryption, homomorphic tallying, and public audits. Today (2026), e-voting has advanced, incorporating blockchain, AI audits, and hybrid models. Based on current sources, here are key free/commercial solutions for university rector/president elections (focusing on similar scale/requirements: secrecy, verifiability, weighted votes, remote access):
+
+      ****** Commercial Solutions (Paid, Proprietary):
+       - **Eligo Voting (eligovoting.com):** Used by over 120 universities worldwide, including Italian institutions like Politecnico di Milano and Università degli Studi di Milano for rector elections. Features: Digital ballots, analytics, integration with campus systems, multi-language support, flexible weighting. Comparison: More modern UI than 2009 Helios, emphasizes engagement (e.g., reminders) and turnout boosts, but not fully open-audit—relies on platform security. Strong on accessibility/compliance (GDPR), but lacks Helios' public E2EV crypto proofs.
+       - **Polyas (polyas.com):** German-based, used for university elections (e.g., student councils, committees). Features: Online ballots, secure auth (2FA), group-specific weighting, hybrid options. Comparison: Easier setup than Helios (no crypto expertise needed), but proprietary; audits internal, not universal. Increases turnout with worldwide access, GDPR-compliant.
+       - **Simply Voting (simplyvoting.com):** For university unions/boards, 100+ universities. Features: Custom ballots, anonymity, audits, hybrid (online/mail). Comparison: Simpler than Helios, scalable, free for small elections, but verifiability via reports, not public proofs. Better for non-tech admins.
+       - **ElectionBuddy (electionbuddy.com):** Popular for colleges. Features: Customizable, secure polling, results dashboards. Comparison: Handles weights, anti-fraud, but proprietary; less crypto rigor than Helios.
+
+      ****** Free/Open-Source Solutions:
+       - **Helios (heliosvoting.org, GitHub open-source):** Evolved versions still free. Features: E2EV, homomorphic tallying, distributed keys. Used in academic pilots. Comparison: Core remains the benchmark for open-audit; updated for scalability.
+       - **ElectionGuard (Microsoft, open-source):** SDK for E2EV systems. Features: Homomorphic encryption, public verifiability. Piloted in various elections. Comparison: Builds on Helios-like crypto (El Gamal), adds modern proofs. Free to integrate, corporate-backed.
+       - **SEEV Technologies (seevtechnologies.com):** New self-enforcing e-voting, open-source elements. Features: Voter-verifiable, compatible with online/i-voting, supports methods like STV. Aiming for statutory elections. Comparison: Enhances Helios' verifiability with "self-enforcing" checks, addresses coercion better.
+       - **UniVote (BFH, open-source):** Used for Swiss Abroad elections (2025). Features: Secure e-voting for remote voters. Comparison: Focuses on transparency/security like Helios, but tailored for international.
+
+      ****** General Comparison to Helios:
+       - **Pros of Modern Solutions:** Easier integration (SSO), mobile apps, higher turnout (24/7), compliance (GDPR). Eligo/Polyas handle weights/categories via software. SEEV adds advanced verifiability.
+       - **Cons vs. Helios:** Proprietary ones lack public verifiability—trust vendor. Less focus on low-coercion crypto. Helios excels in openness, but outdated UI; modern prioritize usability.
+       - **Trends (2026):** Hybrid models, open-source gaining (e.g., SEEV for verifiability). No dominant successor, but ElectionGuard/SEEV closest for E2EV.
+
+***** 3. Which solution would you choose for ULB elections?
+      :PROPERTIES:
+      :NOTER_PAGE: [[pdf:~/org/school/public/cryptanalysis/w1-assignment_adida_helios.pdf::1+%%(org-noter--get-precise-info)]]
+      :END:
+
+      For ULB rectoral elections (similar to UCL: Belgian university, ~25k voters including students/staff, first-time in 2025 per course intro), I'd choose **SEEV Technologies** or a customized **Helios/ElectionGuard hybrid**. Reasons:
+      - **Alignment with Course Themes:** ULB's course emphasizes verifiable e-voting (end-to-end: cast-as-intended, recorded-as-cast, counted-as-recorded). SEEV supports self-enforcing verifiability, echoing Helios' open-audit ethos with modern coercion resistance.
+      - **Security/Transparency:** Open-source elements allow ULB crypto dept. (like UCL's) to audit/modify. Handles weights/privacy; low coercion risk (campus setting).
+      - **Usability/Cost:** Free/open aspects, scalable; modern features boost turnout. Integrates with ULB auth, supports remote/polling.
+      - **Why Not Others?** Proprietary (e.g., Eligo, used in Italian rectors) lack full verifiability—trust vendor, conflicting with "provable security" (week 2). Given 2025 ULB used "cryptographically designed" systems (unspecified), SEEV fits advanced crypto focus.
+      - **Implementation Notes:** Pilot like UCL's; use signed receipts for complaints. Builds trust, per paper's lessons.
+
 *** Review Drill
     :PROPERTIES:
     :DRILL_CARD_TYPE: twosided
     :END:
 
+**** What were the main technical challenges in the UCL 2009 election using Helios? :drill:
+     :PROPERTIES:
+     :DRILL_CARD_TYPE: twosided
+     :END:
+
+     Adapting to weighted votes, scalability for tallying, distributed decryption, integration with infrastructure, client-side security.
+
+     ***** Answer
+      - Weighted votes: Mixnets couldn't handle without revealing categories; solved with homomorphic tallying.
+      - Scalability: Custom code for fast verification.
+      - Decryption: Distributed keys on air-gapped systems.
+      - Integration: Standalone stack due to privacy laws.
+      - Client: Browser encryption risks malware; low-risk assumed.
+
+**** Name some current commercial e-voting solutions for university elections (2026). :drill:
+     :PROPERTIES:
+     :DRILL_CARD_TYPE: twosided
+     :END:
+
+     Eligo Voting, Polyas, Simply Voting, ElectionBuddy.
+
+     ***** Answer
+      - Eligo: 120+ universities, rector elections in Italy.
+      - Polyas: German, turnout boost, GDPR.
+      - Simply Voting: Hybrid, scalable.
+      - ElectionBuddy: Customizable, secure.
+
+**** How does SEEV compare to Helios? :drill:
+     :PROPERTIES:
+     :DRILL_CARD_TYPE: twosided
+     :END:
+
+     Both emphasize verifiability; SEEV adds self-enforcing checks and better coercion resistance.
+
+     ***** Answer
+      SEEV is newer, supports various voting methods, aims for statutory elections, hybrid compatible. Helios pioneered open-audit but has older UI.
+
+**** Why choose SEEV for ULB elections? :drill:
+     :PROPERTIES:
+     :DRILL_CARD_TYPE: twosided
+     :END:
+
+     Fits cryptographic focus, verifiable, open-source elements, handles ULB scale.
+
+     ***** Answer
+      Aligns with course on verifiable systems; secure, transparent, cost-effective for 25k voters.
+
+      
 * Chapters
 # In-depth structure: 6 chapters with summaries, concepts, links, notes, drills, TODOs.
 # Chapters span sessions; link back for cross-ref.
@@ -118,36 +220,159 @@
 :DIR: ~/org/school/copyrighted/cryptanalysis/
 :END:
 *** Summary
-Introduction to core concepts, threats, and defenses.
+    This chapter covers the theoretical introduction to e-voting systems from the course slides (w1_evoting.pdf). It discusses the history and challenges of electronic voting, from DRE machines to cryptographic end-to-end verifiable systems. Key focuses include security goals (correctness, verifiability, privacy, coercion resistance), fundamental tensions, and cryptographic approaches like homomorphic encryption and mixnets. The content emphasizes purely electronic systems without paper, highlighting tools like ElGamal encryption and zero-knowledge proofs.
 *** Key Concepts
-    - Threat Models
-    - Risk Assessment
-    - Basic Encryption
+    - **DRE Machines:** Early electronic voting systems used since 1974, lacking cryptography, prone to vulnerabilities like hardcoded keys and malware.
+    - **Security Goals:** Correctness (result matches intended votes), Verifiability (system provides guarantees), Privacy (confidentiality of votes), Coercion Resistance (cannot prove vote).
+    - **Challenges:** Tension between verifiability and privacy; handling malicious users, software, and hardware.
+    - **Encryption Basics:** Symmetric/public key schemes for confidentiality; properties like IND-CPA/CCA.
+    - **Basic e-Voting Attempt:** Encrypt votes with public key, decrypt with secret; issues with officials knowing votes.
+    - **Improvement:** Publish encrypted votes on bulletin board for verification.
+    - **Advanced Approaches:** Homomorphic encryption (aggregate under encryption, e.g., ElGamal) and Mixnets (shuffle before decryption).
+    - **Crypto Tools:** Homomorphic encryption, zero-knowledge proofs (prove validity without revealing), secret sharing/threshold encryption (distribute trust).
 *** Linked Sessions
-    - Session 1, Session 2
+    - [[** Session 1: [<2026-06-02 Fri> - Helios e-Voting system]]]: Connects the theoretical foundations to the practical Helios case study and preparatory assignment on the Adida paper.
 *** Synthesis Notes
-    # High-level integration
-    Combining CIA with practical examples from labs.
+:PROPERTIES:
+:NOTER_DOCUMENT: copyrighted/cryptanalysis/w1_evoting.pdf
+:NOTER_PAGE: [[pdf:/home/devid/org/school/copyrighted/cryptanalysis/copyrighted/cryptanalysis/w1_evoting.pdf::31]]
+:END:
+    # Sync with org-noter: SPC m n
+    :PROPERTIES:
+    :NOTER_DOCUMENT: copyrighted/cryptanalysis/w1_evoting.pdf
+    :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::20+%%(org-noter--get-precise-info)]]
+    :END:
+
+    **** History and Context (Pages 20-23)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::20+%%(org-noter--get-precise-info)]]
+         :END:
+         - World elections in 2024 highlight global scale (graphic on page 20).
+         - ULB-specific: First rectoral election with all community voting in 2024, fully online (email examples on pages 21, 23).
+
+    **** DRE Machines and Issues (Pages 26-29)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::26+%%(org-noter--get-precise-info)]]
+         :END:
+         - Used in USA since 1974, no crypto; secret designs claimed secure but vulnerable (code leaks, weak locks, malware propagation).
+         - Criticized post-2000 US election; German court ruled for citizen-verifiable results without expertise (2009).
+         - Abandoned in Netherlands; still used in Brazil, India.
+
+    **** Cryptographic Rescue (Page 30)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::30+%%(org-noter--get-precise-info)]]
+         :END:
+         - Legislation funded research leading to end-to-end verifiable systems: cast-as-intended, recorded-as-cast, counted-as-recorded.
+         - Used in Estonia for general elections; focus on low-coercion scenarios.
+
+    **** Scope: Purely Electronic (Page 31)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::31+%%(org-noter--get-precise-info)]]
+         :END:
+         - Excludes paper-based crypto schemes (e.g., scan codes); course on electronic techniques only.
+
+    **** Security Exercise and Goals (Pages 32-33)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::32+%%(org-noter--get-precise-info)]]
+         :END:
+         - Reflect on expected features and past systems.
+         - Goals: Correctness/verifiability, privacy/coercion resistance (image on page 33).
+
+    **** Challenges (Page 34)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::34+%%(org-noter--get-precise-info)]]
+         :END:
+         - Verifiability vs. privacy tension; malicious components.
+
+    **** Encryption Reminder (Page 35)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::35+%%(org-noter--get-precise-info)]]
+         :END:
+         - Key gen, enc/dec algorithms; security properties; potential for vote confidentiality.
+
+    **** Basic e-Voting (Page 36)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::36+%%(org-noter--get-precise-info)]]
+         :END:
+         - Officials generate keys; voters encrypt; decrypt and tally. Issues: officials see votes, no integrity guarantees.
+
+    **** Bulletin Board Improvement (Page 37)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::37+%%(org-noter--get-precise-info)]]
+         :END:
+         - Publish encrypted votes; verify presence/integrity. Remaining: officials see votes, provable votes.
+
+    **** Two Approaches (Page 38)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::38+%%(org-noter--get-precise-info)]]
+         :END:
+         - Homomorphic: Aggregate ciphertexts (Enc(v1 + v2) = Enc(v1) ⊗ Enc(v2)); decrypt sum only.
+         - Mixnets: Shuffle before decryption; unlink from voters.
+
+    **** Crypto Tools (Page 39)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/cryptanalysis/w1_evoting.pdf::39+%%(org-noter--get-precise-info)]]
+         :END:
+         - Homomorphic (ElGamal, re-randomization).
+         - ZK proofs (prove validity, correct computation/decryption/shuffle).
+         - Secret sharing/threshold (distribute decryption; ElGamal).
+           
 *** TODO Synthesize Chapter 1 Notes
     SCHEDULED: <2026-02-15 Sun>
     DEADLINE: <2026-02-20 Fri>--<2026-02-25 Wed>  ; Review range
     :PROPERTIES:
     :EFFORT: 1:00
     :END:
+    - Review pages 20-40 of w1_evoting.pdf.
+    - Cross-reference with Helios paper for practical insights.
+    - Prepare questions on verifiability vs. privacy tension.
 *** Drills
-    **** Cloze Example                                           :drill:
-         The primary goal of cybersecurity is to protect [information] from unauthorized access.
-    **** Multisided Card                                         :drill:
+    **** What are the main security goals of e-voting systems? :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: twosided
+         :END:
+
+         Correctness, Verifiability, Privacy, Coercion resistance.
+
+         ***** Answer
+          - Correctness: Result consistent with intended votes.
+          - Verifiability: System provides correctness guarantees.
+          - Privacy: Confidentiality of individual votes.
+          - Coercion resistance: Cannot prove your vote.
+
+    **** Describe a fundamental challenge in e-voting. :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: twosided
+         :END:
+
+         Tension between verifiability and privacy: Certify results without seeing votes.
+
+         ***** Answer
+          Additional challenges: Careless/malicious users, malicious software/hardware.
+
+    **** What are the two main cryptographic approaches to e-voting? :drill:
          :PROPERTIES:
          :DRILL_CARD_TYPE: multisided
          :END:
-         Side 1: What is a threat actor?
-         #+BEGIN_SRC
-         Side 2: Examples: Hackers, insiders.
-         Side 3: Mitigation: Access controls.
+
+         #+BEGIN_SRC org
+         Homomorphic encryption and Mixnets.
          #+END_SRC
 
-** Chapter 2:
+         ***** Side 1: Homomorphic Encryption
+          Use scheme where Enc(v1 + v2) = Enc(v1) ⊗ Enc(v2); decrypt only the sum.
+
+         ***** Side 2: Mixnets
+          Shuffle votes before decryption to unlink from voters; decrypt individually.
+
+    **** Name key crypto tools for e-voting. :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: cloze
+         :END:
+
+         {Homomorphic encryption} (e.g., {ElGamal}), {zero-knowledge proofs}, {secret sharing/threshold encryption}.
+
+** Week 2:
 :PROPERTIES:
 :CATEGORY: Theory
 :END:
