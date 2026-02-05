@@ -1,0 +1,56 @@
+#+TITLE: Doom Emacs - Magit (Git Integration)
+#+AUTHOR: David Botton
+#+DATE: <2026-02-05>
+#+OPTIONS: toc:nil num:nil ^:nil
+
+Magit is the complete Git interface for Emacs. In Doom Emacs (Evil mode), it is accessed primarily via the SPC g prefix. The main entry point is magit-status (SPC g s). All Magit buffers use Evil normal mode navigation (j/k, gg/G, / search, etc.). Press ? in any Magit buffer for full key help.
+
+** Global Keybindings (SPC g ...)
+
+| Key       | Action                              |
+|-----------|-------------------------------------|
+| =SPC g s= | Magit status (main project view)    |
+| =SPC g g= | Magit dispatch popup (all commands) |
+| =SPC g .= | Magit file dispatch (current file)  |
+| =SPC g b= | Magit blame (toggle blame mode)     |
+| =SPC g f= | Fetch (popup)                       |
+| =SPC g F= | Pull (popup)                        |
+| =SPC g P= | Push (popup)                        |
+| =SPC g l= | Log (popup)                         |
+| =SPC g c= | Clone repository                    |
+
+** Basics (Magit Status Buffer)
+
+| Key | Action                                      |
+|-----|---------------------------------------------|
+| =s= | Stage hunk or file                          |
+| =u= | Unstage hunk or file                        |
+| =S= | Stage all unstaged changes                  |
+| =U= | Unstage all staged changes                  |
+| =c= | Commit popup (then c to create commit)      |
+| =b= | Branch popup (b b checkout, b c create)     |
+| =P= | Push popup (u for current remote)           |
+| =F= | Pull popup (u for current remote)           |
+| =l= | Log popup (l l for current branch log)      |
+| =d= | Diff popup                                  |
+| =TAB= | Toggle section (expand/collapse)            |
+| =?= | Show all available keys                     |
+
+** Advanced (Magit Status & Other Buffers)
+
+| Key | Action                                      |
+|-----|---------------------------------------------|
+| =k= | Discard changes (hunk/file)                 |
+| =z= | Stash popup (z z create, z a apply)         |
+| =r= | Rebase popup (i for interactive)            |
+| =M=  | Merge popup                                 |
+| =t= | Tag popup                                   |
+| =w= | Apply patch / format-patch popup            |
+| =e= | Ediff (resolve conflicts)                   |
+| =X= | Reset popup (hard/mixed/soft)               |
+| =B= | Cherry-pick / revert popup                  |
+| =L= | Log buffer (searchable, select commits)     |
+| =/= | Evil search in buffer                       |
+| =v= | Visual selection (then s/u/k on hunks)      |
+| =:= | Run arbitrary git command |
+| =g= | Refresh current Magit buffer                |

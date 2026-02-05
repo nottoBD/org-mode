@@ -1,0 +1,231 @@
+#+TITLE: MSc Cybersecurity - Corporate information security
+#+AUTHOR: David Botton
+#+DATE: <2026-02-05 Thu>
+#+OPTIONS: toc:t num:t ^:nil
+#+STARTUP: overview
+#+DRILL_CARD_TYPE: twosided  ; Default for org-drill cards (adjust as needed)
+#+PROPERTY: EFFORT_ALL 0:30 1:00 2:00 3:00  ; Expanded for time estimates in agenda tasks
+#+PROPERTY: CATEGORY_ALL Theory Practice Review Synthesis Lab  ; For categorizing tasks in agenda
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: INFOY124-synthesis.pdf
+
+# Agenda Setup: This file is included in org-agenda-files via your config (~/.config/doom/config.el)
+# Ensure org-agenda-files includes "~/org/school/*.org"
+
+# Directories for Links/Attachments:
+# - Copyrighted materials: ~/org/copyrighted/[course-code]/ (subfolder per course)
+# - Non-copyrighted elements: ~/org/public/[course-code]/ (exercises, old exams)
+# Use relative or absolute links: [[file:~/org/copyrighted/[course-code]/slides-session1.pdf]]
+# For attachments: Set per-section DIR property, or global.
+
+# Babel for Code: Enable code execution (e.g., for cybersecurity scripts). In Doom, ensure +babel in org module.
+# Example: #+begin_src python :results output
+# print("Hello, encryption!")
+# #+end_src
+# Hit C-c C-c to execute.
+
+# Improvements:
+# - Ranged Deadlines: Use DEADLINE: <date>--<date> for multi-day spans (Org supports this for agenda warnings across range).
+# - Effort/Categories: For better agenda filtering (e.g., by :CATEGORY:).
+# - More Drills: Examples with cloze, multisided.
+# - Clocking: Use I/O in agenda or C-c C-x C-i/o for time tracking study sessions.
+
+* Course Overview
+:PROPERTIES:
+:DRILL_CARD_TYPE: nil  ; No drill for overview
+:CATEGORY: Overview
+:END:
+** Course Details
+- Code: INFO-Y124
+- Instructor: CUVELLIEZ Charles
+- Schedule: [Edit: Add days, times, rooms, format (in-person/online/Teams) once available]
+- Room: [Edit: Add room details]
+- Objectives:
+  - [Edit: Add from syllabus, e.g., understand corporate security practices, analyze breaches]
+- Prerequisites: [Edit: Add if any, e.g., basic IT knowledge]
+- Quotation: [Edit: Add evaluation breakdown, e.g., 50% exam, 50% project]
+** Resources
+:PROPERTIES:
+:NOTER_DOCUMENT: copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf
+:NOTER_PAGE: [[pdf:/home/devid/org/school/copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf::1]]
+:END:
+- Moodle: https://uv.ulb.ac.be/course/view.php?id=133801
+- Introductory slides: [[file:~/org/school/copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf][Hibert Problems in Cybersecurity]]
+- Case study slides: [[file:~/org/school/copyrighted/info-y124/slide-2_france_emploi_case.pdf][France Emploi Case]]
+
+** Course Milestones
+*** TODO [Edit: Add Milestone, e.g., Project Proposal]
+  DEADLINE: <2026-03-01 Mon>  ; Placeholder - adjust based on syllabus
+*** TODO [Edit: Add Milestone, e.g., Progress Report]
+  DEADLINE: <2026-04-01 Wed>
+*** TODO [Edit: Add Milestone, e.g., Final Report]
+  DEADLINE: <2026-05-01 Sat>
+*** TODO [Edit: Add Milestone, e.g., Exam]
+  DEADLINE: <2026-06-01 Mon>
+
+* Chapters
+# In-depth structure: Chapters with summaries, concepts, links, notes, drills, TODOs.
+# One chapter per slide set/PDF; add more as new materials become available.
+
+** Chapter 1: Hibert Problems in Cybersecurity
+:PROPERTIES:
+:CATEGORY: Theory
+:DIR: ~/org/school/copyrighted/info-y124/
+:END:
+*** Summary
+    This chapter introduces open problems in cybersecurity, inspired by Hilbert problems, based on slide-1_hibert_problems_cybersec.pdf (21 pages). It covers challenges like secure system design from inception (security by design/default) and secure composition of components. Focus on development pressures, lack of incentives, and human factors.
+*** Key Concepts
+    - Security by Design: Systems secure from start, evolving securely.
+    - Security by Default: Capable of secure updates in response to needs.
+    - Secure Composition: Integrating diverse components/services with varying security levels.
+    - Challenges: Development pressure, lack of incentives, version management, human skills.
+    - Component Types: OS, open-source libraries, OT systems.
+*** Synthesis Notes
+    # Sync with org-noter: SPC m n
+    :PROPERTIES:
+    :NOTER_DOCUMENT: copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf
+    :NOTER_PAGE: [[pdf:~/org/school/copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf::2+%%(org-noter--get-precise-info)]]
+    :END:
+
+    **** Problem 1: Secure Design and Evolution (Page 2)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf::2+%%(org-noter--get-precise-info)]]
+         :END:
+         - How to design systems secure from start (security by design) and evolve them securely (security by default).
+         - Few practices ensure components meet security criteria; advances in tools, languages, proofs limited.
+         - Key Challenges: Development pressure (tight deadlines, security seen as costly/slow), lack of incentives (no reliable assessment methods).
+         - Core Problem: Fundamental challenge in secure inception and evolution.
+
+    **** Problem 2: Secure Composition (1/2) (Page 3)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/info-y124/slide-1_hibert_problems_cybersec.pdf::3+%%(org-noter--get-precise-info)]]
+         :END:
+         - Technical principles for secure integration of large-scale systems from diverse components/services.
+         - Systems built by combining parts with varying security due to different teams/expertise.
+         - Goal: Trust whole based on parts' evaluations.
+         - Success Factors: Component properties, design choices, dependency management.
+         - Component Types: OS, open-source libraries, OT physical systems.
+         - Version Challenges: Not always latest; updates not simultaneous.
+         - Human Factor: Designer/developer skills, deep system knowledge.
+
+    **** [Edit: Add notes for remaining pages 4-21 as covered in lectures]
+
+*** TODO Synthesize Chapter 1 Notes
+    SCHEDULED: <2026-02-10 Tue>
+    DEADLINE: <2026-02-15 Sun>--<2026-02-20 Fri>  ; Review range
+    :PROPERTIES:
+    :EFFORT: 1:00
+    :END:
+    - Review all 21 pages of slide-1_hibert_problems_cybersec.pdf.
+    - Cross-reference with case studies for practical insights.
+    - Prepare questions on secure composition challenges.
+*** Drills
+    **** What is the core problem in Problem 1? :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: twosided
+         :END:
+
+         Designing systems secure by design and secure by default.
+
+         ***** Answer
+          - Secure from inception and capable of evolving securely.
+          - Challenges: Development pressure, lack of incentives.
+
+    **** Describe key factors in secure composition (Problem 2). :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: twosided
+         :END:
+
+         Component properties, design choices, dependency management.
+
+         ***** Answer
+          - Integrating diverse components with varying security levels.
+          - Human factors: Skills and system knowledge.
+          - Version issues: Retro-compatibility, update simultaneity.
+
+    **** Name challenges in system development. :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: cloze
+         :END:
+
+         {Development pressure} (tight deadlines, security costly), {lack of incentives} (no assessment methods).
+
+** Chapter 2: France Emploi Case Study
+:PROPERTIES:
+:CATEGORY: Case Study
+:DIR: ~/org/school/copyrighted/info-y124/
+:END:
+*** Summary
+    This chapter analyzes the France Emploi (France Travail) data breach case from slide-2_france_emploi_case.pdf (15 pages). It covers the timeline of the cyber attack, CNIL fine, security weaknesses like weak password policies, and lessons on data access and authentication.
+*** Key Concepts
+    - Data Breach: Exfiltration of personal data from job seekers.
+    - CNIL Fine: For insufficient security under GDPR.
+    - Weaknesses: Excessive third-party access, weak passwords, high failed login attempts threshold.
+    - Attack Methods: Identity impersonation, password reset exploitation, social engineering.
+    - Investigation: Revealed multiple unrelated security issues.
+*** Synthesis Notes
+    # Sync with org-noter: SPC m n
+    :PROPERTIES:
+    :NOTER_DOCUMENT: copyrighted/info-y124/slide-2_france_emploi_case.pdf
+    :NOTER_PAGE: [[pdf:~/org/school/copyrighted/info-y124/slide-2_france_emploi_case.pdf::2+%%(org-noter--get-precise-info)]]
+    :END:
+
+    **** Timeline of the Cyber Attack (Page 2)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/info-y124/slide-2_france_emploi_case.pdf::2+%%(org-noter--get-precise-info)]]
+         :END:
+         - France Travail Data Breach and CNIL Fine: Fined for insufficient data security under GDPR (reduced to half max).
+         - Third party (Cap Emploi) had excessive access without safeguards; ~2,300 agents could view data via browser.
+         - Compromise: One agent's account via identity impersonation, bypassing auth with password reset and social engineering.
+         - Intrusion: Feb 6 – Mar 5, 2024; detected Feb 29 after activity spike.
+         - Exfiltrated: 25 GB, ~36.8 million individuals (job seekers' identity, contacts, employment status/dates).
+         - Investigation: Multiple weaknesses, related/unrelated to breach.
+
+    **** Weak Password Policy (Page 3)
+         :PROPERTIES:
+         :NOTER_PAGE: [[pdf:~/org/school/copyrighted/info-y124/slide-2_france_emploi_case.pdf::3+%%(org-noter--get-precise-info)]]
+         :END:
+         - CNIL criticism: Min 8 chars incl. symbols — insufficient.
+         - Accounts locked after 50 failed attempts, enabling brute-force.
+         - Defense rejected: CNIL assesses all practices, not just exploited ones.
+
+    **** [Edit: Add notes for remaining pages 4-15 as covered in lectures]
+
+*** TODO Synthesize Chapter 2 Notes
+    SCHEDULED: <2026-02-20 Fri>
+    DEADLINE: <2026-02-25 Wed>--<2026-03-01 Mon>  ; Review range
+    :PROPERTIES:
+    :EFFORT: 1:00
+    :END:
+    - Review all 15 pages of slide-2_france_emploi_case.pdf.
+    - Link to theoretical problems in Chapter 1 (e.g., secure composition failures).
+    - Prepare discussion on GDPR implications.
+*** Drills
+    **** What was the main cause of the France Emploi breach? :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: twosided
+         :END:
+
+         Identity impersonation via password reset and social engineering.
+
+         ***** Answer
+          - Third-party (Cap Emploi) excessive access.
+          - Intrusion Feb 6–Mar 5, 2024; 36.8M affected.
+
+    **** Describe the weak password policy criticized by CNIL. :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: twosided
+         :END:
+
+         Min 8 chars incl. symbols; lock after 50 failed attempts.
+
+         ***** Answer
+          - Deemed insufficient; enabled brute-force.
+          - CNIL assesses overall practices.
+
+    **** Key exposed data in the breach. :drill:
+         :PROPERTIES:
+         :DRILL_CARD_TYPE: cloze
+         :END:
+
+         {Identity}, {contact information}, {employment status}, {start and end dates}.
